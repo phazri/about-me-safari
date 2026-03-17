@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - My Journey</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,6 +38,10 @@
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+    <i class="fas fa-sun"></i>
+</button>
             
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
@@ -56,12 +61,14 @@
                 <a href="#about" class="btn btn-primary">Explore My Story</a>
                 <a href="#contact" class="btn btn-secondary">Contact Me</a>
             </div>
+            <div id="particles-js" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
         </div>
         
         <div class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
+    
 
     <!-- ==================== ABOUT SECTION ==================== -->
     <section class="about" id="about">
@@ -254,7 +261,70 @@
             </div>
         </div>
     </section>
+<!-- ==================== PROJECTS SECTION ==================== -->
+<section class="projects" id="projects">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-down">My Projects</h2>
+        <p class="section-subtitle" data-aos="fade-up">Showcase of my work and experiments</p>
+        
+        <!-- Filter Buttons -->
+        <div class="project-filters" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web Dev</button>
+            <button class="filter-btn" data-filter="security">Cybersecurity</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="web" data-aos="fade-up">
+                <div class="project-image">
+                    <img src="images/projects/project1.jpg" alt="Project 1">
+                    <div class="project-overlay">
+                        <button class="project-view-btn" data-project="1">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Project Name</h3>
+                    <p>Short description of the project</p>
+                    <span class="project-tag">Web Development</span>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-image">
+                    <img src="images/projects/project2.jpg" alt="Project 2">
+                    <div class="project-overlay">
+                        <button class="project-view-btn" data-project="2">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Security Audit Tool</h3>
+                    <p>Automated vulnerability scanner</p>
+                    <span class="project-tag">Cybersecurity</span>
+                </div>
+            </div>
+            
+            <!-- Tambahkan project lainnya... -->
+        </div>
+    </div>
+</section>
 
+<!-- Project Modal -->
+<div class="modal" id="project-modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div id="modal-body">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </div>
+</div>
     <!-- ==================== CONTACT SECTION ==================== -->
     <section class="contact" id="contact">
         <div class="container">
@@ -289,32 +359,51 @@
                     
                     <div class="social-links">
                         <a href="https://www.instagram.com/phazri_s_/" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/phazri-septian-undefined-b550a8368/" class="social-link"><i class="fab fa-linkedin"></i></a>
                         <a href="https://github.com/phazri/" class="social-link"><i class="fab fa-github"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 
-                <form class="contact-form" data-aos="fade-left">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject">
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+               <form class="contact-form" action="https://formspree.io/f/xvzwwjga" method="POST" data-aos="fade-left">
+                <!-- Hidden field untuk redirect setelah submit -->
+                    <input type="hidden" name="_next" value="https://phazri.github.io/about-me-safari/#contact">
+                    <input type="hidden" name="_subject" value="New message from About Me Safari!">
+    
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject">
+                        </div>
+                            <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message ✈️</button>
+    
+                        <!-- Status message -->
+                    <p class="form-status" id="form-status"></p>
                 </form>
             </div>
         </div>
     </section>
 
+<div class="music-control" id="music-control">
+    <button class="music-btn" id="music-toggle">
+        <i class="fas fa-music"></i>
+    </button>
+    <div class="music-info">
+        <span id="music-title">Background Music</span>
+        <input type="range" id="music-volume" min="0" max="1" step="0.1" value="0.3">
+    </div>
+</div>
 
+<audio id="bg-music" loop>
+    <source src="assets/audio/background-music.mp3" type="audio/mpeg">
+</audio>
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 My Safari Journey. All Rights Reserved.</p>
