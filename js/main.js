@@ -442,3 +442,531 @@ if (document.getElementById('particles-js')) {
         retina_detect: true
     });
 }
+// ==================== 🎯 INTERACTIVE HOBBY MODAL ====================
+
+// Data untuk setiap hobby (bisa disesuaikan dengan konten Anda)
+const hobbyData = {
+    reading: {
+        title: "Reading & Literature",
+        subtitle: "Exploring worlds through words",
+        headerImage: "images/hobbies/reading-header.jpg",
+        description: "Reading has been my passion since childhood. I love diving into different genres - from fantasy novels that spark imagination to self-development books that help me grow. Every book teaches me something new and opens my mind to different perspectives.",
+        
+        stats: {
+            booksRead: "150+",
+            favoriteGenre: "Fantasy & Sci-Fi",
+            hoursReading: "500+",
+            currentlyReading: "5"
+        },
+        
+        favoriteBooks: [
+            {
+                title: "The Alchemist",
+                author: "Paulo Coelho",
+                rating: 5,
+                cover: "images/hobbies/books/alchemist.jpg"
+            },
+            {
+                title: "Atomic Habits",
+                author: "James Clear",
+                rating: 5,
+                cover: "images/hobbies/books/atomic-habits.jpg"
+            },
+            {
+                title: "Harry Potter Series",
+                author: "J.K. Rowling",
+                rating: 5,
+                cover: "images/hobbies/books/harry-potter.jpg"
+            },
+            {
+                title: "Rich Dad Poor Dad",
+                author: "Robert Kiyosaki",
+                rating: 4,
+                cover: "images/hobbies/books/rich-dad.jpg"
+            }
+        ],
+        
+        equipment: [
+            {
+                icon: "fa-book-open",
+                title: "Kindle Paperwhite",
+                desc: "E-reader untuk baca digital"
+            },
+            {
+                icon: "fa-bookmark",
+                title: "Goodreads",
+                desc: "Tracking bacaan & review"
+            },
+            {
+                icon: "fa-coffee",
+                title: "Coffee Shop",
+                desc: "Tempat baca favorit"
+            }
+        ],
+        
+        gallery: [
+            "images/hobbies/reading/photo1.jpg",
+            "images/hobbies/reading/photo2.jpg",
+            "images/hobbies/reading/photo3.jpg",
+            "images/hobbies/reading/photo4.jpg"
+        ]
+    },
+    
+    music: {
+        title: "Music & Guitar",
+        subtitle: "Creating melodies, expressing emotions",
+        headerImage: "images/hobbies/music-header.jpg",
+        description: "Music is my therapy. I've been playing guitar for 5 years, starting from acoustic to electric. I love playing various genres - from pop, rock, to fingerstyle. Sometimes I record covers and share them on social media.",
+        
+        stats: {
+            yearsPlaying: "5 Years",
+            songsLearned: "100+",
+            genres: "Pop, Rock, Fingerstyle",
+            practiceHours: "1000+"
+        },
+        
+        favoriteSongs: [
+            {
+                title: "Tears in Heaven",
+                artist: "Eric Clapton",
+                difficulty: "Intermediate",
+                rating: 5
+            },
+            {
+                title: "Wonderwall",
+                artist: "Oasis",
+                difficulty: "Beginner",
+                rating: 4
+            },
+            {
+                title: "Blackbird",
+                artist: "The Beatles",
+                difficulty: "Advanced",
+                rating: 5
+            },
+            {
+                title: "Hotel California",
+                artist: "Eagles",
+                difficulty: "Advanced",
+                rating: 5
+            }
+        ],
+        
+        equipment: [
+            {
+                icon: "fa-guitar",
+                title: "Yamaha F310",
+                desc: "Acoustic guitar pertama"
+            },
+            {
+                icon: "fa-music",
+                title: "Fender Stratocaster",
+                desc: "Electric guitar"
+            },
+            {
+                icon: "fa-sliders-h",
+                title: "Audio Interface",
+                desc: "Untuk recording"
+            }
+        ],
+        
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Ganti dengan video Anda
+        
+        gallery: [
+            "images/hobbies/music/photo1.jpg",
+            "images/hobbies/music/photo2.jpg",
+            "images/hobbies/music/photo3.jpg",
+            "images/hobbies/music/photo4.jpg"
+        ]
+    },
+    
+    photography: {
+        title: "Photography",
+        subtitle: "Capturing moments that last forever",
+        headerImage: "images/hobbies/photography-header.jpg",
+        description: "Photography allows me to freeze time and capture beautiful moments. I enjoy various types of photography - from landscape and street photography to portraits. Every photo tells a story, and I love being the storyteller.",
+        
+        stats: {
+            photosTaken: "5000+",
+            favoriteSubject: "Landscape & Portrait",
+            yearsShooting: "3 Years",
+            editingHours: "300+"
+        },
+        
+        equipment: [
+            {
+                icon: "fa-camera",
+                title: "Canon EOS M50",
+                desc: "Mirrorless camera utama"
+            },
+            {
+                icon: "fa-circle",
+                title: "50mm f/1.8",
+                desc: "Prime lens favorit"
+            },
+            {
+                icon: "fa-laptop",
+                title: "Lightroom & Photoshop",
+                desc: "Editing software"
+            },
+            {
+                icon: "fa-sun",
+                title: "Golden Hour",
+                desc: "Waktu foto terbaik"
+            }
+        ],
+        
+        gallery: [
+            "images/hobbies/photography/photo1.jpg",
+            "images/hobbies/photography/photo2.jpg",
+            "images/hobbies/photography/photo3.jpg",
+            "images/hobbies/photography/photo4.jpg",
+            "images/hobbies/photography/photo5.jpg",
+            "images/hobbies/photography/photo6.jpg"
+        ],
+        
+        achievements: [
+            {
+                date: "2024",
+                title: "Photography Exhibition",
+                desc: "Mengikuti pameran foto kampus"
+            },
+            {
+                date: "2023",
+                title: "Photo Contest Winner",
+                desc: "Juara 2 lomba foto landscape"
+            }
+        ]
+    },
+    
+    traveling: {
+        title: "Traveling & Adventure",
+        subtitle: "Exploring the world, one city at a time",
+        headerImage: "images/hobbies/traveling-header.jpg",
+        description: "Traveling broadens my horizons and teaches me about different cultures, foods, and ways of life. I love exploring both natural landscapes and urban cities. Every trip gives me new experiences and unforgettable memories.",
+        
+        stats: {
+            citiesVisited: "15+",
+            countriesVisited: "3",
+            favoriteDestination: "Bali & Yogyakarta",
+            travelDays: "100+"
+        },
+        
+        favoriteDestinations: [
+            {
+                title: "Bali, Indonesia",
+                location: "Indonesia",
+                rating: 5,
+                highlight: "Beautiful beaches & culture"
+            },
+            {
+                title: "Yogyakarta",
+                location: "Indonesia",
+                rating: 5,
+                highlight: "Borobudur & local wisdom"
+            },
+            {
+                title: "Bandung",
+                location: "Indonesia",
+                rating: 4,
+                highlight: "Cool weather & culinary"
+            },
+            {
+                title: "Singapore",
+                location: "Singapore",
+                rating: 5,
+                highlight: "Modern city & attractions"
+            }
+        ],
+        
+        timeline: [
+            {
+                date: "December 2024",
+                title: "Bali Adventure",
+                desc: "Explored Ubud, Kuta, and Uluwatu. Experienced amazing sunsets and traditional culture."
+            },
+            {
+                date: "August 2024",
+                title: "Yogyakarta Trip",
+                desc: "Visited Borobudur at sunrise, explored Malioboro, and enjoyed local cuisine."
+            },
+            {
+                date: "March 2024",
+                title: "Singapore Visit",
+                desc: "Experienced modern city life, visited Gardens by the Bay and Universal Studios."
+            }
+        ],
+        
+        gallery: [
+            "images/hobbies/traveling/photo1.jpg",
+            "images/hobbies/traveling/photo2.jpg",
+            "images/hobbies/traveling/photo3.jpg",
+            "images/hobbies/traveling/photo4.jpg",
+            "images/hobbies/traveling/photo5.jpg",
+            "images/hobbies/traveling/photo6.jpg"
+        ]
+    }
+};
+
+// Modal elements
+const hobbyModal = document.getElementById('hobby-modal');
+const hobbyModalClose = document.getElementById('hobby-modal-close');
+const hobbyModalBody = document.getElementById('hobby-modal-body');
+const hobbyCards = document.querySelectorAll('.hobby-card');
+
+// Function to generate star rating
+function generateStars(rating) {
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+}
+
+// Function to create modal content
+function createModalContent(hobbyKey) {
+    const data = hobbyData[hobbyKey];
+    if (!data) return '';
+    
+    let content = `
+        <div class="modal-header">
+            <img src="${data.headerImage}" alt="${data.title}" onerror="this.src='https://via.placeholder.com/900x300/6D4C41/FFD54F?text=${encodeURIComponent(data.title)}'">
+            <div class="modal-header-overlay">
+                <h2>${data.title}</h2>
+                <p>${data.subtitle}</p>
+            </div>
+        </div>
+        
+        <div class="modal-content-section">
+            <h3 class="modal-section-title">
+                <i class="fas fa-info-circle"></i> About This Hobby
+            </h3>
+            <p class="modal-text">${data.description}</p>
+            
+            <!-- Stats -->
+            ${data.stats ? `
+            <h3 class="modal-section-title">
+                <i class="fas fa-chart-bar"></i> My Stats
+            </h3>
+            <div class="stats-grid">
+                ${Object.entries(data.stats).map(([key, value]) => `
+                    <div class="stat-card">
+                        <span class="stat-number">${value}</span>
+                        <div class="stat-label">${key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            <!-- Favorite Books (for reading) -->
+            ${data.favoriteBooks ? `
+            <h3 class="modal-section-title">
+                <i class="fas fa-heart"></i> Favorite Books
+            </h3>
+            <div class="favorite-list">
+                ${data.favoriteBooks.map(book => `
+                    <div class="favorite-item">
+                        <img src="${book.cover}" alt="${book.title}" class="favorite-cover" onerror="this.style.display='none'">
+                        <div class="favorite-info">
+                            <h4>${book.title}</h4>
+                            <p>by ${book.author}</p>
+                            <div class="favorite-rating">${generateStars(book.rating)}</div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            <!-- Favorite Songs (for music) -->
+            ${data.favoriteSongs ? `
+            <h3 class="modal-section-title">
+                <i class="fas fa-music"></i> Favorite Songs to Play
+            </h3>
+            <div class="favorite-list">
+                ${data.favoriteSongs.map(song => `
+                    <div class="favorite-item">
+                        <div class="favorite-info" style="flex: 1;">
+                            <h4>${song.title}</h4>
+                            <p>${song.artist}</p>
+                            <p style="font-size: 0.85rem; color: var(--primary-light);">
+                                <i class="fas fa-signal"></i> ${song.difficulty}
+                            </p>
+                            <div class="favorite-rating">${generateStars(song.rating)}</div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            <!-- Video (for music) -->
+            ${data.videoUrl ? `
+            <h3 class="modal-section-title">
+                <i class="fas fa-video"></i> Watch Me Play
+            </h3>
+            <div class="video-container">
+                <iframe src="${data.videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            ` : ''}
+            
+            <!-- Favorite Destinations (for traveling) -->
+            ${data.favoriteDestinations ? `
+            <h3 class="modal-section-title">
+                <i class="fas fa-map-marked-alt"></i> Favorite Destinations
+            </h3>
+            <div class="favorite-list">
+                ${data.favoriteDestinations.map(dest => `
+                    <div class="favorite-item">
+                        <div class="favorite-info" style="flex: 1;">
+                            <h4>${dest.title}</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> ${dest.location}</p>
+                            <p style="font-size: 0.9rem; margin-top: 5px;">${dest.highlight}</p>
+                            <div class="favorite-rating">${generateStars(dest.rating)}</div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            <!-- Travel Timeline -->
+            ${data.timeline ? `
+            <h3 class="modal-section-title">
+                <i class="fas fa-route"></i> My Travel Journey
+            </h3>
+            <div class="hobby-timeline">
+                ${data.timeline.map(event => `
+                    <div class="timeline-event">
+                        <div class="timeline-date">${event.date}</div>
+                        <div class="timeline-title">${event.title}</div>
+                        <div class="timeline-desc">${event.desc}</div>
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            <!-- Achievements (for photography) -->
+            ${data.achievements ? `
+            <h3 class="modal-section-title">
+                <i class="fas fa-trophy"></i> Achievements
+            </h3>
+            <div class="hobby-timeline">
+                ${data.achievements.map(ach => `
+                    <div class="timeline-event">
+                        <div class="timeline-date">${ach.date}</div>
+                        <div class="timeline-title">${ach.title}</div>
+                        <div class="timeline-desc">${ach.desc}</div>
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            <!-- Equipment -->
+            ${data.equipment ? `
+            <h3 class="modal-section-title">
+                <i class="fas fa-tools"></i> My Equipment & Tools
+            </h3>
+            <div class="equipment-list">
+                ${data.equipment.map(eq => `
+                    <div class="equipment-item">
+                        <div class="equipment-icon">
+                            <i class="fas ${eq.icon}"></i>
+                        </div>
+                        <div class="equipment-info">
+                            <h4>${eq.title}</h4>
+                            <p>${eq.desc}</p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            <!-- Photo Gallery -->
+            ${data.gallery ? `
+            <h3 class="modal-section-title">
+                <i class="fas fa-images"></i> Photo Gallery
+            </h3>
+            <div class="photo-gallery">
+                ${data.gallery.map((img, index) => `
+                    <div class="gallery-item" onclick="openLightbox('${img}', ${index})">
+                        <img src="${img}" alt="Gallery ${index + 1}" onerror="this.src='https://via.placeholder.com/300x300/8D6E63/FFD54F?text=Photo+${index + 1}'">
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+        </div>
+    `;
+    
+    return content;
+}
+
+// Open modal when clicking hobby card
+hobbyCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const hobbyKey = card.dataset.hobby;
+        const content = createModalContent(hobbyKey);
+        
+        hobbyModalBody.innerHTML = content;
+        hobbyModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Close modal
+if (hobbyModalClose) {
+    hobbyModalClose.addEventListener('click', () => {
+        hobbyModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+}
+
+// Close modal when clicking outside
+if (hobbyModal) {
+    hobbyModal.addEventListener('click', (e) => {
+        if (e.target === hobbyModal) {
+            hobbyModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && hobbyModal?.classList.contains('active')) {
+        hobbyModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Lightbox function for gallery images
+function openLightbox(imageSrc, index) {
+    // Create lightbox if not exists
+    let lightbox = document.getElementById('lightbox');
+    if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 4000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        `;
+        lightbox.innerHTML = `
+            <img id="lightbox-img" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px;">
+            <button id="lightbox-close" style="position: absolute; top: 20px; right: 40px; background: none; border: none; color: white; font-size: 3rem; cursor: pointer;">&times;</button>
+        `;
+        document.body.appendChild(lightbox);
+        
+        // Close lightbox
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightbox.querySelector('img')) {
+                lightbox.remove();
+            }
+        });
+    }
+    
+    const img = lightbox.querySelector('#lightbox-img');
+    img.src = imageSrc;
+    lightbox.style.display = 'flex';
+}
