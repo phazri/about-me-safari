@@ -19,6 +19,17 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- 📊 Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EBH7KTQWFW "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: 'About Me - My Safari Journey',
+    page_location: window.location.href
+  });
+</script>
 </head>
 <body>
     
@@ -60,6 +71,9 @@
             <div class="hero-buttons">
                 <a href="#about" class="btn btn-primary">Explore My Story</a>
                 <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                <a href="assets/cv/CV-Muhamad-Phazri.pdf" class="btn btn-cv" download>
+        <i class="fas fa-download"></i> Download CV
+        </a>
             </div>
             <div id="particles-js" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
         </div>
